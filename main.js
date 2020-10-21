@@ -1,38 +1,34 @@
-import { TicTacToe, Player } from './tic-tac-toe.js'
+import { PlayerSelect } from './player-select.ctrl.js'
+import { GameManager } from './game.ctrl.js'
 
-const $board = document.querySelector('.board')
-const $cells = [...document.querySelectorAll('.board .cell')]
+const views = {
+  game: {
+    $element: document.querySelector('#game'),
+    controller: GameManager
+  },
+  playerSelect: {
+    $element: document.querySelector('#player-select'),
+    controller: PlayerSelect,
+  }
+}
 
-const players = [
-  new Player('Me', ':)'),
-  new Player('Computer', ':(')
-]
+let currentController = null
 
-const game = new TicTacToe(players)
-game.addEventLestener('placed', ({ row, column, mark }) => {
-  const $cell = $cells.find($c => $c.dataset.row == row && $c.dataset.column == column)
-  $cell.textContent = mark
-})
+changeView('playerSelect')
 
-game.addEventLestener('won', player => {
-  setTimeout(() => {
-    alert(player.mark + ' win')
-    game.restart()
-  })
-})
 
-game.addEventLestener('started', () => {
-  $cells.forEach($c => $c.textContent = '')
-})
-
-$board.addEventListener('click', ({ target }) => {
-  if (!target.classList.contains('cell')) {
-    return
+export function changeView(name, data) {
+  if (!(name in views)) {
+    throw new Error('No such view')
   }
 
-  const { column, row } = target.dataset
-  game.place(+column, +row)
-})
+  currentController = new views[name].controller(data)
 
-game.place(0, 0)
+  showView(name)
+}
 
+function showView(name) {
+  for (const view in views) {
+    views[view].$element.hidden = view !== name
+  }
+}

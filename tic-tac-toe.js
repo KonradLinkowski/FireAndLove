@@ -55,7 +55,7 @@ export class TicTacToe {
     this.#emit('started')
   }
 
-  addEventLestener(event, callback) {
+  addEventListener(event, callback) {
     this.#listeners[event].push(callback)
   }
 

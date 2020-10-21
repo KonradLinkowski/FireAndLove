@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-color: #7c7c7c;
   color: white;
 }
 
@@ -26,4 +26,54 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.player-list {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  justify-items: center;
+  gap: 20px;
+  padding: 0;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  position: relative;
+
+  background: #686868;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.14) , 0px 1px 10px 0px rgba(0,0,0,0.12) , 0px 2px 4px -1px rgba(0,0,0,0.2) ;
+}
+
+.player.selected {
+  outline: 4px solid lightgreen;
+  transform: translateY(-10px);
+  box-shadow: 0px 16px 24px 2px rgba(0,0,0,0.14) , 0px 6px 30px 5px rgba(0,0,0,0.12) , 0px 8px 10px -7px rgba(0,0,0,0.2) ;
+}
+
+.player__image {
+  width: 200px;
+  height: 200px;
+  background: red;
+}
+
+/* .player__name, .player__score { } */
+
+.player__delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+
+  cursor: pointer;
+}
+
+.player:hover .player__delete {
+  opacity: 1;
 }

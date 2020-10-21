@@ -9,18 +9,25 @@
 <body>
   <header><h1>Fire & Love</h1></header>
   <main>
-    <div class="board">
-      <div class="cells">
-        <div class="cell" data-row="0" data-column="0"></div>
-        <div class="cell" data-row="0" data-column="1"></div>
-        <div class="cell" data-row="0" data-column="2"></div>
-        <div class="cell" data-row="1" data-column="0"></div>
-        <div class="cell" data-row="1" data-column="1"></div>
-        <div class="cell" data-row="1" data-column="2"></div>
-        <div class="cell" data-row="2" data-column="0"></div>
-        <div class="cell" data-row="2" data-column="1"></div>
-        <div class="cell" data-row="2" data-column="2"></div>
-      </div>
+    <section id="player-select">
+      <h2>Player select</h2>
+      <ul class="player-list"></ul>
+      <button disabled class="start-button">Start</button>
+    </section>
+    <section hidden id="game">
+      <div class="board">
+        <div class="cells">
+          <div class="cell" data-row="0" data-column="0"></div>
+          <div class="cell" data-row="0" data-column="1"></div>
+          <div class="cell" data-row="0" data-column="2"></div>
+          <div class="cell" data-row="1" data-column="0"></div>
+          <div class="cell" data-row="1" data-column="1"></div>
+          <div class="cell" data-row="1" data-column="2"></div>
+          <div class="cell" data-row="2" data-column="0"></div>
+          <div class="cell" data-row="2" data-column="1"></div>
+          <div class="cell" data-row="2" data-column="2"></div>
+        </div>
+      </section>
     </div>
   </main>
   <script src="main.js" type="module"></script>
