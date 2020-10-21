@@ -4,7 +4,7 @@ const O = 'O'
 const THREE = [...Array(3).keys()]
 const NINE = [...Array(9).keys()]
 
-const EVENTS = ['placed', 'won', 'started']
+const EVENTS = ['placed', 'won', 'started', 'draw']
 
 export class OutOfBoundsError extends Error {
   constructor(column, row) {
@@ -100,7 +100,7 @@ export class TicTacToe {
     cell.mark = player.mark
     this.#nextPlayer()
     this.#emit('placed', cell)
-    this.#winCheck(player)
+    this.#winCheck(player) || this.#drawCheck(player)
     return cell
   }
 
@@ -115,6 +115,14 @@ export class TicTacToe {
       this.#emit('won', player)
     }
     return win
+  }
+
+  #drawCheck() {
+    const draw = this.#cells.every(cell => cell.mark)
+    if (draw) {
+      this.#emit('draw')
+    }
+    return draw
   }
 
   valueOf() {

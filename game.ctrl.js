@@ -15,6 +15,7 @@ export class GameManager extends Component {
     this.#game.addEventListener('placed', this.#handleMarkPlace.bind(this))
     this.#game.addEventListener('won', this.#handleWin.bind(this))
     this.#game.addEventListener('started', this.#handleStart.bind(this))
+    this.#game.addEventListener('draw', this.#handleDraw.bind(this))
   }
 
   #handleStart() {
@@ -24,6 +25,13 @@ export class GameManager extends Component {
   #handleWin(player) {
     setTimeout(() => {
       alert(player.mark + ' win')
+      this.#game.restart()
+    })
+  }
+
+  #handleDraw() {
+    setTimeout(() => {
+      alert('draw')
       this.#game.restart()
     })
   }
