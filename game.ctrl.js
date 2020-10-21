@@ -1,13 +1,16 @@
+import { Component } from './component.js'
 import { TicTacToe } from './tic-tac-toe.js'
 
-export class GameManager {
+export class GameManager extends Component {
   #$board = document.querySelector('.board')
   #$cells = [...document.querySelectorAll('.board .cell')]
   #game = null
 
   constructor(players) {
+    super(players)
+    console.log(players)
     this.#game = new TicTacToe(players)
-    this.#$board.addEventListener('click', this.#handleBoardClick.bind(this))
+    this.addEvent(this.#$board, 'click', this.#handleBoardClick.bind(this))
 
     this.#game.addEventListener('placed', this.#handleMarkPlace.bind(this))
     this.#game.addEventListener('won', this.#handleWin.bind(this))
@@ -21,7 +24,7 @@ export class GameManager {
   #handleWin(player) {
     setTimeout(() => {
       alert(player.mark + ' win')
-      game.restart()
+      this.#game.restart()
     })
   }
 

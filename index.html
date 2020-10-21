@@ -11,8 +11,19 @@
   <main>
     <section id="player-select">
       <h2>Player select</h2>
+      <button class="add-player">Add player</button>
       <ul class="player-list"></ul>
       <button disabled class="start-button">Start</button>
+      <div hidden id="create-player-modal" class="overlay">
+        <div class="add-player-modal">
+          <h3>Create Player</h3>
+          <label for="player-name">Name</label>
+          <input id="player-name" type="text">
+          <label for="player-mark">Mark</label>
+          <input id="player-mark" type="text">
+          <button id="create-player">Create</button>
+        </div>
+      </div>
     </section>
     <section hidden id="game">
       <div class="board">

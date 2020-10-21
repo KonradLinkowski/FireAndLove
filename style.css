@@ -77,3 +77,21 @@ body {
 .player:hover .player__delete {
   opacity: 1;
 }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #0007;
+}
+
+[hidden] {
+  display: none !important;
+}

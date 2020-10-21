@@ -22,6 +22,10 @@ export function changeView(name, data) {
     throw new Error('No such view')
   }
 
+  if (currentController) {
+    currentController.onDestroy()
+  }
+
   currentController = new views[name].controller(data)
 
   showView(name)

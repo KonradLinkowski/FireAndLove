@@ -25,10 +25,11 @@ export class IlligalMove extends Error {
 }
 
 export class Player {
-  constructor(name, mark) {
+  constructor(name, mark, id = Math.random().toString(36).substr(2, 9)) {
     this.score = 0
     this.name = name
     this.mark = mark
+    this.id = id
   }
 }
 

@@ -30,8 +30,8 @@ export class PlayersManager {
     return this.players
   }
 
-  deletePlayer(player) {
-    const index = this.players.findIndex(player)
+  deletePlayer(id) {
+    const index = this.players.findIndex(player => player.id === id)
     this.players.splice(index, 1)
     this.#savePlayers()
   }
